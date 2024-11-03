@@ -19,6 +19,8 @@ app.get('/', async (req, res) => {
   try {
     const client = await pool.connect();
     const result = await client.query('SELECT * FROM posts');
+    const result = await client.query('SELECT * FROM pl');
+
     const results = { 'results': (result) ? result.rows : null};
     res.render('pages/index', results);
     client.release();
